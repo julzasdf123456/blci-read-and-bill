@@ -1,0 +1,57 @@
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/drawable/options_custom_form.xml" value="0.37864583333333335" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/drawable/semi_transparent.xml" value="0.2359375" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_create_tracks.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_disconnection_form.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_disconnection_home.xml" value="0.20364583333333333" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_disconnection_list.xml" value="0.190625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_disconnection_menu_list.xml" value="0.23333333333333334" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_download.xml" value="0.19479166666666667" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_download_disconnection_list.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_download_reading_list.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_download_select.xml" value="0.19479166666666667" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_home.xml" value="0.22604166666666667" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_new_captured_meters.xml" value="0.3484375" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_new_meter.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_rates_index.xml" value="0.21354166666666666" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_reading_console.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_reading_form.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_reading_list.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_reading_list_view.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_record_tracks.xml" value="0.20260416666666667" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_settings.xml" value="0.1703125" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_unbilled.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_upload.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_upload_disconnection.xml" value="0.20104166666666667" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/activity_upload_readings.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/bottomsheet_reading_list.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/recyclerview_account_disco_list.xml" value="0.2046875" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/recyclerview_accounts_list.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/recyclerview_layout_disconnection_group_list.xml" value="0.23333333333333334" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/recyclerview_layout_download_reading_schedules.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/recyclerview_layout_menu.xml" value="0.22291666666666668" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/recyclerview_layout_reading_schedules.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/recyclerview_layout_tracknames.xml" value="0.20260416666666667" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/layout/recyclerview_rates_view.xml" value="0.21354166666666666" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/menu/create_tracks_menu.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/menu/image_menu.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/menu/reading_bottom_nav_menu.xml" value="0.21354166666666666" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/menu/reading_list_menu.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/menu/tracknames_menu.xml" value="0.19479166666666667" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/xml/file_paths.xml" value="0.21041666666666667" />
+        <entry key="..\:/AndroidStudioProjects/ReadandBill/app/src/main/res/xml/network_security_config.xml" value="0.3625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

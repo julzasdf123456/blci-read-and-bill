@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_baseline_location_on_24"
+        android:title="Map View"
+        android:id="@+id/mapView"
+        app:showAsAction="always"/>
+
+    <item
+        android:icon="@drawable/ic_baseline_assignment_late_24"
+        android:title="Map View"
+        android:id="@+id/unBilled"
+        app:showAsAction="always"/>
+
+    <item
+        android:icon="@drawable/ic_baseline_electric_meter_24"
+        android:title="New Meter Capture"
+        android:id="@+id/newMeterCapture"/>
+
+    <item
+        android:icon="@drawable/ic_baseline_electric_meter_24"
+        android:title="Captured Meters"
+        android:id="@+id/capturedMeters"/>
+</menu>
