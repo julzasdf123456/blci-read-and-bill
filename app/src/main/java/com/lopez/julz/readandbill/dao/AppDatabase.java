@@ -18,7 +18,8 @@ import java.util.List;
         ReadingImages.class,
         DisconnectionList.class,
         Settings.class,
-    }, version = 93)
+        ArrearsLedgerDistribution.class,
+    }, version = 102)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract TrackNamesDao trackNamesDao();
 
@@ -41,4 +42,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract DisconnectionListDao disconnectionListDao();
 
     public abstract SettingsDao settingsDao();
+
+    public abstract ArrearsLedgerDistributionDao arrearsLedgerDistributionDao();
 }

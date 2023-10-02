@@ -119,10 +119,31 @@ public class DownloadedPreviousReadings {
     @ColumnInfo(name = "LifelinerDateExpire")
     private String LifelinerDateExpire;
 
+    @ColumnInfo(name = "PreviousSurcharges")
+    private String PreviousSurcharges;
+
+    @ColumnInfo(name = "Notices")
+    private String Notices;
+
+    @ColumnInfo(name = "AdvancedMaterialDeposit")
+    private String AdvancedMaterialDeposit;
+
+    @ColumnInfo(name = "CustomerDeposit")
+    private String CustomerDeposit;
+
+    @ColumnInfo(name = "AdvancedMaterialDepositStatus")
+    private String AdvancedMaterialDepositStatus;
+
+    @ColumnInfo(name = "CustomerDepositStatus")
+    private String CustomerDepositStatus;
+
+    @ColumnInfo(name = "ConnectionDate")
+    private String ConnectionDate;
+
     public DownloadedPreviousReadings() {
     }
 
-    public DownloadedPreviousReadings(@NonNull String id, String accountId, String serviceAccountName, String multiplier, String coreloss, String accountType, String accountStatus, String areaCode, String groupCode, String town, String barangay, String latitude, String longitude, String oldAccountNo, String kwhUsed, String servicePeriod, String sequenceCode, String status, String seniorCitizen, String evat5Percent, String ewt2Percent, String balance, String arrearsLedger, String meterSerial, String readingTimestamp, String arrearsTotal, String townFull, String barangayFull, String purok, String deposit, String changeMeterAdditionalKwh, String changeMeterStartKwh, String katasNgVat, String prevKwhUsed, String zone, String lifeliner, String lifelinerDateExpire) {
+    public DownloadedPreviousReadings(@NonNull String id, String accountId, String serviceAccountName, String multiplier, String coreloss, String accountType, String accountStatus, String areaCode, String groupCode, String town, String barangay, String latitude, String longitude, String oldAccountNo, String kwhUsed, String servicePeriod, String sequenceCode, String status, String seniorCitizen, String evat5Percent, String ewt2Percent, String balance, String arrearsLedger, String meterSerial, String readingTimestamp, String arrearsTotal, String townFull, String barangayFull, String purok, String deposit, String changeMeterAdditionalKwh, String changeMeterStartKwh, String katasNgVat, String prevKwhUsed, String zone, String lifeliner, String lifelinerDateExpire, String previousSurcharges, String notices, String advancedMaterialDeposit, String customerDeposit, String advancedMaterialDepositStatus, String customerDepositStatus, String connectionDate) {
         this.id = id;
         AccountId = accountId;
         ServiceAccountName = serviceAccountName;
@@ -160,6 +181,13 @@ public class DownloadedPreviousReadings {
         Zone = zone;
         Lifeliner = lifeliner;
         LifelinerDateExpire = lifelinerDateExpire;
+        PreviousSurcharges = previousSurcharges;
+        Notices = notices;
+        AdvancedMaterialDeposit = advancedMaterialDeposit;
+        CustomerDeposit = customerDeposit;
+        AdvancedMaterialDepositStatus = advancedMaterialDepositStatus;
+        CustomerDepositStatus = customerDepositStatus;
+        ConnectionDate = connectionDate;
     }
 
     @NonNull
@@ -457,5 +485,61 @@ public class DownloadedPreviousReadings {
 
     public void setLifelinerDateExpire(String lifelinerDateExpire) {
         LifelinerDateExpire = lifelinerDateExpire;
+    }
+
+    public String getPreviousSurcharges() {
+        return PreviousSurcharges;
+    }
+
+    public void setPreviousSurcharges(String previousSurcharges) {
+        PreviousSurcharges = previousSurcharges;
+    }
+
+    public String getNotices() {
+        return Notices;
+    }
+
+    public void setNotices(String notices) {
+        Notices = notices;
+    }
+
+    public String getAdvancedMaterialDeposit() {
+        return AdvancedMaterialDeposit;
+    }
+
+    public void setAdvancedMaterialDeposit(String advancedMaterialDeposit) {
+        AdvancedMaterialDeposit = advancedMaterialDeposit;
+    }
+
+    public String getCustomerDeposit() {
+        return CustomerDeposit;
+    }
+
+    public void setCustomerDeposit(String customerDeposit) {
+        CustomerDeposit = customerDeposit;
+    }
+
+    public String getAdvancedMaterialDepositStatus() {
+        return AdvancedMaterialDepositStatus;
+    }
+
+    public void setAdvancedMaterialDepositStatus(String advancedMaterialDepositStatus) {
+        AdvancedMaterialDepositStatus = advancedMaterialDepositStatus;
+    }
+
+    public String getCustomerDepositStatus() {
+        return CustomerDepositStatus;
+    }
+
+    public void setCustomerDepositStatus(String customerDepositStatus) {
+        CustomerDepositStatus = customerDepositStatus;
+    }
+
+    public String getConnectionDate() {
+        return ConnectionDate;
+    }
+
+    public void setConnectionDate(String connectionDate) {
+        ConnectionDate = connectionDate;
     }
 }

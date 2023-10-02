@@ -296,10 +296,22 @@ public class Bills {
     @ColumnInfo(name = "FranchiseTaxOthers")
     private String FranchiseTaxOthers;
 
+    @ColumnInfo(name = "OthersVAT")
+    private String OthersVAT;
+
+    @ColumnInfo(name = "TermedPayments")
+    private String TermedPayments;
+
+    @ColumnInfo(name = "AdvancedMaterialDeposit")
+    private String AdvancedMaterialDeposit;
+
+    @ColumnInfo(name = "CustomerDeposit")
+    private String CustomerDeposit;
+
     public Bills() {
     }
 
-    public Bills(@NonNull String id, String billNumber, String accountNumber, String servicePeriod, String multiplier, String coreloss, String kwhUsed, String previousKwh, String presentKwh, String demandPreviousKwh, String demandPresentKwh, String additionalKwh, String additionalDemandKwh, String kwhAmount, String effectiveRate, String additionalCharges, String deductions, String netAmount, String billingDate, String serviceDateFrom, String serviceDateTo, String dueDate, String meterNumber, String consumerType, String billType, String generationSystemCharge, String transmissionDeliveryChargeKW, String transmissionDeliveryChargeKWH, String systemLossCharge, String distributionDemandCharge, String distributionSystemCharge, String supplyRetailCustomerCharge, String supplySystemCharge, String meteringRetailCustomerCharge, String meteringSystemCharge, String RFSC, String lifelineRate, String interClassCrossSubsidyCharge, String PPARefund, String seniorCitizenSubsidy, String missionaryElectrificationCharge, String environmentalCharge, String strandedContractCosts, String NPCStrandedDebt, String feedInTariffAllowance, String missionaryElectrificationREDCI, String generationVAT, String transmissionVAT, String systemLossVAT, String distributionVAT, String realPropertyTax, String otherGenerationRateAdjustment, String otherTransmissionCostAdjustmentKW, String otherTransmissionCostAdjustmentKWH, String otherSystemLossCostAdjustment, String otherLifelineRateCostAdjustment, String seniorCitizenDiscountAndSubsidyAdjustment, String franchiseTax, String businessTax, String notes, String userId, String billedFrom, String uploadStatus, String deductedDeposit, String excessDeposit, String evat2Percent, String evat5Percent, String katasNgVat, String solarImportPresent, String solarImportPrevious, String solarExportPresent, String solarExportPrevious, String solarImportKwh, String solarExportKwh, String generationChargeSolarExport, String solarResidualCredit, String solarDemandChargeKW, String solarDemandChargeKWH, String solarRetailCustomerCharge, String solarSupplySystemCharge, String solarMeteringRetailCharge, String solarMeteringSystemCharge, String item1, String item2, String item3, String item4, String item5, String paidAmount, String balance, String ACRM, String powerActReduction, String ACRMVAT, String missionaryElectrificationSPUG, String missionaryElectrificationSPUGTRUEUP, String FranchiseTaxOthers) {
+    public Bills(@NonNull String id, String billNumber, String accountNumber, String servicePeriod, String multiplier, String coreloss, String kwhUsed, String previousKwh, String presentKwh, String demandPreviousKwh, String demandPresentKwh, String additionalKwh, String additionalDemandKwh, String kwhAmount, String effectiveRate, String additionalCharges, String deductions, String netAmount, String billingDate, String serviceDateFrom, String serviceDateTo, String dueDate, String meterNumber, String consumerType, String billType, String generationSystemCharge, String transmissionDeliveryChargeKW, String transmissionDeliveryChargeKWH, String systemLossCharge, String distributionDemandCharge, String distributionSystemCharge, String supplyRetailCustomerCharge, String supplySystemCharge, String meteringRetailCustomerCharge, String meteringSystemCharge, String RFSC, String lifelineRate, String interClassCrossSubsidyCharge, String PPARefund, String seniorCitizenSubsidy, String missionaryElectrificationCharge, String environmentalCharge, String strandedContractCosts, String NPCStrandedDebt, String feedInTariffAllowance, String missionaryElectrificationREDCI, String generationVAT, String transmissionVAT, String systemLossVAT, String distributionVAT, String realPropertyTax, String otherGenerationRateAdjustment, String otherTransmissionCostAdjustmentKW, String otherTransmissionCostAdjustmentKWH, String otherSystemLossCostAdjustment, String otherLifelineRateCostAdjustment, String seniorCitizenDiscountAndSubsidyAdjustment, String franchiseTax, String businessTax, String notes, String userId, String billedFrom, String uploadStatus, String deductedDeposit, String excessDeposit, String evat2Percent, String evat5Percent, String katasNgVat, String solarImportPresent, String solarImportPrevious, String solarExportPresent, String solarExportPrevious, String solarImportKwh, String solarExportKwh, String generationChargeSolarExport, String solarResidualCredit, String solarDemandChargeKW, String solarDemandChargeKWH, String solarRetailCustomerCharge, String solarSupplySystemCharge, String solarMeteringRetailCharge, String solarMeteringSystemCharge, String item1, String item2, String item3, String item4, String item5, String paidAmount, String balance, String ACRM, String powerActReduction, String ACRMVAT, String missionaryElectrificationSPUG, String missionaryElectrificationSPUGTRUEUP, String franchiseTaxOthers, String othersVAT, String termedPayments, String advancedMaterialDeposit, String customerDeposit) {
         this.id = id;
         BillNumber = billNumber;
         AccountNumber = accountNumber;
@@ -394,7 +406,11 @@ public class Bills {
         this.ACRMVAT = ACRMVAT;
         MissionaryElectrificationSPUG = missionaryElectrificationSPUG;
         MissionaryElectrificationSPUGTRUEUP = missionaryElectrificationSPUGTRUEUP;
-        this.FranchiseTaxOthers = FranchiseTaxOthers;
+        FranchiseTaxOthers = franchiseTaxOthers;
+        OthersVAT = othersVAT;
+        TermedPayments = termedPayments;
+        AdvancedMaterialDeposit = advancedMaterialDeposit;
+        CustomerDeposit = customerDeposit;
     }
 
     public void setId(@NonNull String id) {
@@ -1156,5 +1172,37 @@ public class Bills {
 
     public void setFranchiseTaxOthers(String franchiseTaxOthers) {
         FranchiseTaxOthers = franchiseTaxOthers;
+    }
+
+    public String getOthersVAT() {
+        return OthersVAT;
+    }
+
+    public void setOthersVAT(String othersVAT) {
+        OthersVAT = othersVAT;
+    }
+
+    public String getTermedPayments() {
+        return TermedPayments;
+    }
+
+    public void setTermedPayments(String termedPayments) {
+        TermedPayments = termedPayments;
+    }
+
+    public String getAdvancedMaterialDeposit() {
+        return AdvancedMaterialDeposit;
+    }
+
+    public void setAdvancedMaterialDeposit(String advancedMaterialDeposit) {
+        AdvancedMaterialDeposit = advancedMaterialDeposit;
+    }
+
+    public String getCustomerDeposit() {
+        return CustomerDeposit;
+    }
+
+    public void setCustomerDeposit(String customerDeposit) {
+        CustomerDeposit = customerDeposit;
     }
 }

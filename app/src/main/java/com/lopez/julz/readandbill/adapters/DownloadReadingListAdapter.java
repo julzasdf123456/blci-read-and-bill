@@ -22,6 +22,8 @@ import com.lopez.julz.readandbill.R;
 import com.lopez.julz.readandbill.api.RequestPlaceHolder;
 import com.lopez.julz.readandbill.api.RetrofitBuilder;
 import com.lopez.julz.readandbill.dao.AppDatabase;
+import com.lopez.julz.readandbill.dao.ArrearsLedgerDistribution;
+import com.lopez.julz.readandbill.dao.ArrearsLedgerDistributionDao;
 import com.lopez.julz.readandbill.dao.DownloadedPreviousReadings;
 import com.lopez.julz.readandbill.dao.DownloadedPreviousReadingsDao;
 import com.lopez.julz.readandbill.dao.Rates;
@@ -77,10 +79,11 @@ public class DownloadReadingListAdapter extends RecyclerView.Adapter<DownloadRea
         holder.downloadReadingList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                holder.downloadProgressIndeterminate.setVisibility(View.VISIBLE);
                 holder.downloadReadingList.setEnabled(false);
                 new DownloadSchedule().execute(readingSchedule);
-                fetchDownloadbleList(readingSchedule, holder.downloadProgress, holder.downloadReadingList, position);
                 fetchRates(readingSchedule.getServicePeriod());
+                fetchDownloadbleList(readingSchedule, holder.downloadProgress, holder.downloadReadingList, position, holder);
             }
         });
     }
@@ -95,7 +98,7 @@ public class DownloadReadingListAdapter extends RecyclerView.Adapter<DownloadRea
         public MaterialCardView parent;
         public TextView area, billingMonth, scheduledDate;
         public FloatingActionButton downloadReadingList;
-        public CircularProgressIndicator downloadProgress;
+        public CircularProgressIndicator downloadProgress, downloadProgressIndeterminate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -106,10 +109,12 @@ public class DownloadReadingListAdapter extends RecyclerView.Adapter<DownloadRea
             scheduledDate = itemView.findViewById(R.id.scheduledDate);
             downloadReadingList = itemView.findViewById(R.id.downloadReadingList);
             downloadProgress = itemView.findViewById(R.id.downloadProgress);
+            downloadProgressIndeterminate = itemView.findViewById(R.id.downloadProgressIndeterminate);
+            downloadProgressIndeterminate.setVisibility(View.GONE);
         }
     }
 
-    public void fetchDownloadbleList(ReadingSchedules readingSchedules, CircularProgressIndicator downloadProgress, FloatingActionButton downloadFab, int position) {
+    public void fetchDownloadbleList(ReadingSchedules readingSchedules, CircularProgressIndicator downloadProgress, FloatingActionButton downloadFab, int position, ViewHolder holder) {
         try {
             Call<List<DownloadedPreviousReadings>> downloadCall = requestPlaceHolder.downloadAccounts(readingSchedules.getAreaCode(), readingSchedules.getGroupCode(), readingSchedules.getServicePeriod(), readingSchedules.getMeterReader());
 
@@ -118,8 +123,10 @@ public class DownloadReadingListAdapter extends RecyclerView.Adapter<DownloadRea
                 public void onResponse(Call<List<DownloadedPreviousReadings>> call, Response<List<DownloadedPreviousReadings>> response) {
                     if (response.isSuccessful()) {
                         List<DownloadedPreviousReadings> downloadedPreviousReadingsList = response.body();
-                        DownloadList downloadList = new DownloadList(downloadProgress, downloadFab, downloadedPreviousReadingsList.size(), readingSchedules.getId(), position);
+                        DownloadList downloadList = new DownloadList(downloadProgress, downloadFab, downloadedPreviousReadingsList.size(), readingSchedules.getId(), position, holder);
                         downloadList.execute(downloadedPreviousReadingsList);
+
+                        fetchArrearsLedgerDistribution(readingSchedules);
                     } else {
                         Log.e("ERR_FETCH_DATA", response.errorBody() + "" + response.raw());
                         Toast.makeText(context, "Error fetching data", Toast.LENGTH_SHORT).show();
@@ -230,15 +237,18 @@ public class DownloadReadingListAdapter extends RecyclerView.Adapter<DownloadRea
 
         public CircularProgressIndicator indicator;
         public FloatingActionButton downloadFab;
+
+        public ViewHolder holder;
         int max, position;
         String id;
 
-        public DownloadList(CircularProgressIndicator indicator, FloatingActionButton downloadFab, int max, String id, int position) {
+        public DownloadList(CircularProgressIndicator indicator, FloatingActionButton downloadFab, int max, String id, int position, ViewHolder holder) {
             this.indicator = indicator;
             this.downloadFab = downloadFab;
             this.max = max;
             this.id = id;
             this.position = position;
+            this.holder = holder;
         }
 
         @Override
@@ -272,6 +282,8 @@ public class DownloadReadingListAdapter extends RecyclerView.Adapter<DownloadRea
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            holder.downloadProgressIndeterminate.setIndeterminate(false);
+            holder.downloadProgressIndeterminate.setVisibility(View.GONE);
             indicator.setMax(max);
             Toast.makeText(context, "Download started. Please don't exit this window.", Toast.LENGTH_SHORT).show();
         }
@@ -318,6 +330,64 @@ public class DownloadReadingListAdapter extends RecyclerView.Adapter<DownloadRea
             } catch (Exception e) {
                 Log.e("ERR_UPDT_STSTS", e.getMessage());
             }
+        }
+    }
+
+    /**
+     * GET ARREARS LEDGER DISTRIBUTION
+     */
+    public void fetchArrearsLedgerDistribution(ReadingSchedules readingSchedules) {
+        try {
+            Call<List<ArrearsLedgerDistribution>> downloadCall = requestPlaceHolder.getArrearsLedger(readingSchedules.getAreaCode(), readingSchedules.getGroupCode(), readingSchedules.getServicePeriod(), readingSchedules.getMeterReader());
+
+            downloadCall.enqueue(new Callback<List<ArrearsLedgerDistribution>>() {
+                @Override
+                public void onResponse(Call<List<ArrearsLedgerDistribution>> call, Response<List<ArrearsLedgerDistribution>> response) {
+                    if (response.isSuccessful()) {
+                        List<ArrearsLedgerDistribution> arrearsLedgerDistributionList = response.body();
+                        new SaveArrearsLedgerDistribution().execute(arrearsLedgerDistributionList);
+                    } else {
+                        Log.e("ERR_FETCH_DATA", response.errorBody() + "" + response.raw());
+                        Toast.makeText(context, "Error fetching data", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<ArrearsLedgerDistribution>> call, Throwable t) {
+                    Log.e("ERR_FETCH_DATA_AR_DST", t.getMessage());
+                    t.printStackTrace();
+                    Toast.makeText(context, "Error fetching termed payments: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("ERR_GET_AR_DST", e.getMessage());
+            Toast.makeText(context, "Error fetching termed payments", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * SAVE ARREARS LEDGERS
+     */
+    public class SaveArrearsLedgerDistribution extends AsyncTask<List<ArrearsLedgerDistribution>, Integer, Void> {
+        @Override
+        protected Void doInBackground(List<ArrearsLedgerDistribution>... lists) {
+            try {
+                if (lists != null) {
+                    /**
+                     * SAVE THE LIST TO DATABASE
+                     */
+                    ArrearsLedgerDistributionDao dpr = db.arrearsLedgerDistributionDao();
+                    List<ArrearsLedgerDistribution> dprList = lists[0];
+                    int max = dprList.size();
+                    for (int i=0; i<max; i++) {
+                        dpr.insertAll(dprList.get(i));
+                    }
+                }
+            } catch (Exception e) {
+                Log.e("ERR_DWNLD_ARR_DST", e.getMessage());
+            }
+            return null;
         }
     }
 }

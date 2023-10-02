@@ -47,6 +47,14 @@
         </LinearLayout>
 
         <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/downloadProgressIndeterminate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:indicatorSize="52dp"
+            android:layout_gravity="right|center_vertical"/>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/downloadProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

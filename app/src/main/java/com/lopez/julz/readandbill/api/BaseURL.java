@@ -6,6 +6,6 @@ public class BaseURL {
     }
 
     public static String baseUrl(String ip) {
-        return "http://" + ip + "/blci/public/api/";
+        return "http://" + ip + "/blci-beta-10/public/api/";
     }
 }

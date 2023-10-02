@@ -99,6 +99,17 @@ public class ObjectHelpers {
         }
     }
 
+    public static long formatShortDateInMillis(String date) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date d = sdf.parse(date);
+            return d.getTime();
+        } catch (Exception e) {
+            Log.e("ERR_FRMT_DT_IN_MLS", e.getMessage());
+            return 0;
+        }
+    }
+
     public static String formatDetailedDate(String date) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

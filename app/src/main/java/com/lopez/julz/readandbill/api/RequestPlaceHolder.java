@@ -1,5 +1,6 @@
 package com.lopez.julz.readandbill.api;
 
+import com.lopez.julz.readandbill.dao.ArrearsLedgerDistribution;
 import com.lopez.julz.readandbill.dao.Bills;
 import com.lopez.julz.readandbill.dao.DisconnectionList;
 import com.lopez.julz.readandbill.dao.DownloadedPreviousReadings;
@@ -50,6 +51,9 @@ public interface RequestPlaceHolder {
 
     @GET("download-rates")
     Call<List<Rates>> downloadRates(@Query("ServicePeriod") String ServicePeriod);
+
+    @GET("get-arrear-ledgers")
+    Call<List<ArrearsLedgerDistribution>> getArrearsLedger(@Query("AreaCode") String AreaCode, @Query("GroupCode") String GroupCode, @Query("ServicePeriod") String ServicePeriod, @Query("MeterReader") String MeterReader);
 
     @GET("update-downloaded-status")
     Call<String> updateDownloadedStatus(@Query("id") String id);
