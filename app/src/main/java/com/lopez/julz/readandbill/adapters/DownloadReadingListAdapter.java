@@ -240,7 +240,7 @@ public class DownloadReadingListAdapter extends RecyclerView.Adapter<DownloadRea
 
         public ViewHolder holder;
         int max, position;
-        String id;
+        public String id;
 
         public DownloadList(CircularProgressIndicator indicator, FloatingActionButton downloadFab, int max, String id, int position, ViewHolder holder) {
             this.indicator = indicator;
@@ -307,13 +307,12 @@ public class DownloadReadingListAdapter extends RecyclerView.Adapter<DownloadRea
              * UPDATE STATUS
              */
             try {
-                Call<String> stringCall = requestPlaceHolder.updateDownloadedStatus(id);
+                Call<Void> stringCall = requestPlaceHolder.updateDownloadedStatus(id);
 
-                stringCall.enqueue(new Callback<String>() {
+                stringCall.enqueue(new Callback<Void>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
+                    public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
-                            Log.e("RESPONSE", response.body());
                             readingSchedulesList.remove(position);
                             notifyItemRemoved(position);
                             notifyItemRangeChanged(position, readingSchedulesList.size());
@@ -323,12 +322,16 @@ public class DownloadReadingListAdapter extends RecyclerView.Adapter<DownloadRea
                     }
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                    public void onFailure(Call<Void> call, Throwable t) {
                         Log.e("ERR_UPDT_STSTS", t.getMessage());
+                        t.printStackTrace();
+                        AlertHelpers.showMessageDialog(context, "Oops!", t.getMessage());
                     }
                 });
             } catch (Exception e) {
                 Log.e("ERR_UPDT_STSTS", e.getMessage());
+                e.printStackTrace();
+                AlertHelpers.showMessageDialog(context, "Oops!", e.getMessage());
             }
         }
     }

@@ -38,10 +38,16 @@ public class ReadingSchedules {
     @ColumnInfo(name = "Disabled")
     private String Disabled;
 
+    @ColumnInfo(name = "Zone")
+    private String Zone;
+
+    @ColumnInfo(name = "Block")
+    private String Block;
+
     public ReadingSchedules() {
     }
 
-    public ReadingSchedules(@NonNull String id, String areaCode, String groupCode, String servicePeriod, String scheduledDate, String meterReader, String status, String created_at, String update_at, String disabled) {
+    public ReadingSchedules(@NonNull String id, String areaCode, String groupCode, String servicePeriod, String scheduledDate, String meterReader, String status, String created_at, String update_at, String disabled, String zone, String block) {
         this.id = id;
         AreaCode = areaCode;
         GroupCode = groupCode;
@@ -52,6 +58,8 @@ public class ReadingSchedules {
         this.created_at = created_at;
         this.update_at = update_at;
         Disabled = disabled;
+        Zone = zone;
+        Block = block;
     }
 
     @NonNull
@@ -133,5 +141,21 @@ public class ReadingSchedules {
 
     public void setDisabled(String disabled) {
         Disabled = disabled;
+    }
+
+    public String getZone() {
+        return Zone;
+    }
+
+    public void setZone(String zone) {
+        Zone = zone;
+    }
+
+    public String getBlock() {
+        return Block;
+    }
+
+    public void setBlock(String block) {
+        Block = block;
     }
 }

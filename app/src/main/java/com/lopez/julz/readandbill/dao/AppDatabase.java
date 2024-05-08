@@ -19,7 +19,7 @@ import java.util.List;
         DisconnectionList.class,
         Settings.class,
         ArrearsLedgerDistribution.class,
-    }, version = 102)
+    }, version = 113)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract TrackNamesDao trackNamesDao();
 

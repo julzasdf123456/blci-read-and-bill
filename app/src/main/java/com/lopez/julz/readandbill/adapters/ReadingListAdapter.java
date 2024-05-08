@@ -52,7 +52,7 @@ public class ReadingListAdapter extends RecyclerView.Adapter<ReadingListAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ReadingSchedules readingSchedule = readingSchedulesList.get(position);
 
-        holder.area.setText("Area " + readingSchedule.getAreaCode() + " | Day " + readingSchedule.getGroupCode());
+        holder.area.setText("Zone(s): " + readingSchedule.getZone() + " | Day " + readingSchedule.getGroupCode());
         holder.billingMonth.setText("Billing Month: " + ObjectHelpers.formatShortDate(readingSchedule.getServicePeriod()));
         holder.scheduledDate.setText("Scheduled On: " + ObjectHelpers.formatShortDateWithDate(readingSchedule.getScheduledDate()));
 
@@ -99,6 +99,7 @@ public class ReadingListAdapter extends RecyclerView.Adapter<ReadingListAdapter.
                     intent.putExtra("AREACODE", readingSchedule.getAreaCode());
                     intent.putExtra("GROUPCODE", readingSchedule.getGroupCode());
                     intent.putExtra("SERVICEPERIOD", readingSchedule.getServicePeriod());
+                    intent.putExtra("ZONE", readingSchedule.getZone());
                     context.startActivity(intent);
                     Log.e("TEST", readingSchedule.getServicePeriod());
                 }

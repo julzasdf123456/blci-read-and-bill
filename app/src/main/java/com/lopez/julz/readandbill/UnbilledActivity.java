@@ -40,6 +40,8 @@ public class UnbilledActivity extends AppCompatActivity {
 
     public boolean unbilled = true;
 
+    String from = "READ";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +67,7 @@ public class UnbilledActivity extends AppCompatActivity {
         toggleMenu = findViewById(R.id.toggleMenu);
         downloadedPreviousReadingsList = new ArrayList<>();
         readingMonitorViewRecyclerView = findViewById(R.id.readingMonitorViewRecyclerView);
-        accountsListAdapter = new AccountsListAdapter(downloadedPreviousReadingsList, UnbilledActivity.this, servicePeriod, userId);
+        accountsListAdapter = new AccountsListAdapter(downloadedPreviousReadingsList, UnbilledActivity.this, servicePeriod, userId, areaCode, groupCode, from);
         readingMonitorViewRecyclerView.setAdapter(accountsListAdapter);
         readingMonitorViewRecyclerView.setLayoutManager(new LinearLayoutManager(UnbilledActivity.this));
 

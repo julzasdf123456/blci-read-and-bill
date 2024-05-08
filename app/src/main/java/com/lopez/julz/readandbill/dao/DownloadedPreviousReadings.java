@@ -140,10 +140,16 @@ public class DownloadedPreviousReadings {
     @ColumnInfo(name = "ConnectionDate")
     private String ConnectionDate;
 
+    @ColumnInfo(name = "LastReadingDate")
+    private String LastReadingDate;
+
+    @ColumnInfo(name = "HouseNumber")
+    private String HouseNumber;
+
     public DownloadedPreviousReadings() {
     }
 
-    public DownloadedPreviousReadings(@NonNull String id, String accountId, String serviceAccountName, String multiplier, String coreloss, String accountType, String accountStatus, String areaCode, String groupCode, String town, String barangay, String latitude, String longitude, String oldAccountNo, String kwhUsed, String servicePeriod, String sequenceCode, String status, String seniorCitizen, String evat5Percent, String ewt2Percent, String balance, String arrearsLedger, String meterSerial, String readingTimestamp, String arrearsTotal, String townFull, String barangayFull, String purok, String deposit, String changeMeterAdditionalKwh, String changeMeterStartKwh, String katasNgVat, String prevKwhUsed, String zone, String lifeliner, String lifelinerDateExpire, String previousSurcharges, String notices, String advancedMaterialDeposit, String customerDeposit, String advancedMaterialDepositStatus, String customerDepositStatus, String connectionDate) {
+    public DownloadedPreviousReadings(@NonNull String id, String accountId, String serviceAccountName, String multiplier, String coreloss, String accountType, String accountStatus, String areaCode, String groupCode, String town, String barangay, String latitude, String longitude, String oldAccountNo, String kwhUsed, String servicePeriod, String sequenceCode, String status, String seniorCitizen, String evat5Percent, String ewt2Percent, String balance, String arrearsLedger, String meterSerial, String readingTimestamp, String arrearsTotal, String townFull, String barangayFull, String purok, String deposit, String changeMeterAdditionalKwh, String changeMeterStartKwh, String katasNgVat, String prevKwhUsed, String zone, String lifeliner, String lifelinerDateExpire, String previousSurcharges, String notices, String advancedMaterialDeposit, String customerDeposit, String advancedMaterialDepositStatus, String customerDepositStatus, String connectionDate, String lastReadingDate, String houseNumber) {
         this.id = id;
         AccountId = accountId;
         ServiceAccountName = serviceAccountName;
@@ -188,6 +194,8 @@ public class DownloadedPreviousReadings {
         AdvancedMaterialDepositStatus = advancedMaterialDepositStatus;
         CustomerDepositStatus = customerDepositStatus;
         ConnectionDate = connectionDate;
+        LastReadingDate = lastReadingDate;
+        HouseNumber = houseNumber;
     }
 
     @NonNull
@@ -541,5 +549,21 @@ public class DownloadedPreviousReadings {
 
     public void setConnectionDate(String connectionDate) {
         ConnectionDate = connectionDate;
+    }
+
+    public String getLastReadingDate() {
+        return LastReadingDate;
+    }
+
+    public void setLastReadingDate(String lastReadingDate) {
+        LastReadingDate = lastReadingDate;
+    }
+
+    public String getHouseNumber() {
+        return HouseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        HouseNumber = houseNumber;
     }
 }

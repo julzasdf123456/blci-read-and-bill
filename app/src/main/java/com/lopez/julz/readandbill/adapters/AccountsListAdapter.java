@@ -23,13 +23,16 @@ public class AccountsListAdapter extends RecyclerView.Adapter<AccountsListAdapte
 
     public List<DownloadedPreviousReadings> downloadedPreviousReadingsList;
     public Context context;
-    public String servicePeriod, userId;
+    public String servicePeriod, userId, areaCode, groupCode, from;
 
-    public AccountsListAdapter(List<DownloadedPreviousReadings> downloadedPreviousReadingsList, Context context, String servicePeriod, String userId) {
+    public AccountsListAdapter(List<DownloadedPreviousReadings> downloadedPreviousReadingsList, Context context, String servicePeriod, String userId, String areaCode, String groupCode, String from) {
         this.downloadedPreviousReadingsList = downloadedPreviousReadingsList;
         this.context = context;
         this.servicePeriod = servicePeriod;
         this.userId = userId;
+        this.areaCode = areaCode;
+        this.groupCode = groupCode;
+        this.from = from;
     }
 
     @NonNull
@@ -45,9 +48,9 @@ public class AccountsListAdapter extends RecyclerView.Adapter<AccountsListAdapte
         DownloadedPreviousReadings downloadedPreviousReadings = downloadedPreviousReadingsList.get(position);
 
         holder.accountName.setText(downloadedPreviousReadings.getServiceAccountName());
-        holder.accountNumber.setText((downloadedPreviousReadings.getOldAccountNo() != null ? downloadedPreviousReadings.getOldAccountNo() : "-" ) + " | " + downloadedPreviousReadings.getAccountType());
+        holder.accountNumber.setText((downloadedPreviousReadings.getOldAccountNo() != null ? downloadedPreviousReadings.getOldAccountNo() : "-" ) + " | " + downloadedPreviousReadings.getAccountType() + " | " + downloadedPreviousReadings.getHouseNumber());
 
-        if (downloadedPreviousReadings.getAccountStatus().equals("ACTIVE")) {
+        if (downloadedPreviousReadings != null && downloadedPreviousReadings.getAccountStatus() != null && downloadedPreviousReadings.getAccountStatus().equals("ACTIVE")) {
             if (downloadedPreviousReadings.getStatus() != null) {
                 if (downloadedPreviousReadings.getStatus().equals("READ")) {
                     holder.accountStatus.setBackgroundResource(R.drawable.ic_baseline_check_circle_18);
@@ -82,8 +85,11 @@ public class AccountsListAdapter extends RecyclerView.Adapter<AccountsListAdapte
                 intent.putExtra("ID", downloadedPreviousReadings.getId());
                 intent.putExtra("SERVICEPERIOD", servicePeriod);
                 intent.putExtra("USERID", userId);
+                intent.putExtra("AREACODE", areaCode);
+                intent.putExtra("GROUPCODE", groupCode);
+                intent.putExtra("FROM", from);
                 context.startActivity(intent);
-                Log.e("TEST ACT", servicePeriod);
+                Log.e("TEST FROM", from);
             }
         });
     }

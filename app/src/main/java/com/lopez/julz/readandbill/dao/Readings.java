@@ -44,9 +44,44 @@ public class Readings {
     @ColumnInfo(name = "MeterReader")
     private String MeterReader;
 
+    @ColumnInfo(name = "SolarKwhUsed")
+    private String SolarKwhUsed;
+
+    @ColumnInfo(name = "PreviousReadingDate")
+    private String PreviousReadingDate;
+
+    @ColumnInfo(name = "PreviousReading")
+    private String PreviousReading;
+
+    @ColumnInfo(name = "ReadingErrorCode")
+    private String ReadingErrorCode;
+
+    @ColumnInfo(name = "ReadingErrorRemarks")
+    private String ReadingErrorRemarks;
+
+    @ColumnInfo(name = "KwhConsumed")
+    private String KwhConsumed;
+
+    @ColumnInfo(name = "HouseNumber")
+    private String HouseNumber;
+
+    @ColumnInfo(name = "ConsumerName")
+    private String ConsumerName;
+
+    @ColumnInfo(name = "OldAccountNo")
+    private String OldAccountNo;
+
+    @ColumnInfo(name = "AreaCode")
+    private String AreaCode;
+
+    @ColumnInfo(name = "GroupCode")
+    private String GroupCode;
+
+    @ColumnInfo(name = "MeterNumber")
+    private String MeterNumber;
     public Readings() {}
 
-    public Readings(@NonNull String id, String accountNumber, String servicePeriod, String readingTimestamp, String kwhUsed, String demandKwhUsed, String notes, String latitude, String longitude, String uploadStatus, String fieldStatus, String meterReader) {
+    public Readings(@NonNull String id, String accountNumber, String servicePeriod, String readingTimestamp, String kwhUsed, String demandKwhUsed, String notes, String latitude, String longitude, String uploadStatus, String fieldStatus, String meterReader, String solarKwhUsed, String previousReadingDate, String previousReading, String readingErrorCode, String readingErrorRemarks, String kwhConsumed, String houseNumber, String consumerName, String oldAccountNo, String areaCode, String groupCode, String meterNumber) {
         this.id = id;
         AccountNumber = accountNumber;
         ServicePeriod = servicePeriod;
@@ -59,6 +94,18 @@ public class Readings {
         UploadStatus = uploadStatus;
         FieldStatus = fieldStatus;
         MeterReader = meterReader;
+        SolarKwhUsed = solarKwhUsed;
+        PreviousReadingDate = previousReadingDate;
+        PreviousReading = previousReading;
+        ReadingErrorCode = readingErrorCode;
+        ReadingErrorRemarks = readingErrorRemarks;
+        KwhConsumed = kwhConsumed;
+        HouseNumber = houseNumber;
+        ConsumerName = consumerName;
+        OldAccountNo = oldAccountNo;
+        AreaCode = areaCode;
+        GroupCode = groupCode;
+        MeterNumber = meterNumber;
     }
 
     @NonNull
@@ -156,5 +203,101 @@ public class Readings {
 
     public void setMeterReader(String meterReader) {
         MeterReader = meterReader;
+    }
+
+    public String getSolarKwhUsed() {
+        return SolarKwhUsed;
+    }
+
+    public void setSolarKwhUsed(String solarKwhUsed) {
+        SolarKwhUsed = solarKwhUsed;
+    }
+
+    public String getPreviousReadingDate() {
+        return PreviousReadingDate;
+    }
+
+    public void setPreviousReadingDate(String previousReadingDate) {
+        PreviousReadingDate = previousReadingDate;
+    }
+
+    public String getPreviousReading() {
+        return PreviousReading;
+    }
+
+    public void setPreviousReading(String previousReading) {
+        PreviousReading = previousReading;
+    }
+
+    public String getReadingErrorCode() {
+        return ReadingErrorCode;
+    }
+
+    public void setReadingErrorCode(String readingErrorCode) {
+        ReadingErrorCode = readingErrorCode;
+    }
+
+    public String getReadingErrorRemarks() {
+        return ReadingErrorRemarks;
+    }
+
+    public void setReadingErrorRemarks(String readingErrorRemarks) {
+        ReadingErrorRemarks = readingErrorRemarks;
+    }
+
+    public String getKwhConsumed() {
+        return KwhConsumed;
+    }
+
+    public void setKwhConsumed(String kwhConsumed) {
+        KwhConsumed = kwhConsumed;
+    }
+
+    public String getHouseNumber() {
+        return HouseNumber;
+    }
+
+    public void setHouseNumber(String houseNumber) {
+        HouseNumber = houseNumber;
+    }
+
+    public String getConsumerName() {
+        return ConsumerName;
+    }
+
+    public void setConsumerName(String consumerName) {
+        ConsumerName = consumerName;
+    }
+
+    public String getOldAccountNo() {
+        return OldAccountNo;
+    }
+
+    public void setOldAccountNo(String oldAccountNo) {
+        OldAccountNo = oldAccountNo;
+    }
+
+    public String getAreaCode() {
+        return AreaCode;
+    }
+
+    public void setAreaCode(String areaCode) {
+        AreaCode = areaCode;
+    }
+
+    public String getGroupCode() {
+        return GroupCode;
+    }
+
+    public void setGroupCode(String groupCode) {
+        GroupCode = groupCode;
+    }
+
+    public String getMeterNumber() {
+        return MeterNumber;
+    }
+
+    public void setMeterNumber(String meterNumber) {
+        MeterNumber = meterNumber;
     }
 }

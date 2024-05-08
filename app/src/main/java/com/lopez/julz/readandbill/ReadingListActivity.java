@@ -83,7 +83,7 @@ public class ReadingListActivity extends AppCompatActivity {
                 for(int i=0; i<readingSchedulesList.size(); i++) {
                     Log.e("ETES", readingSchedulesList.get(i).getAreaCode() + " - " + readingSchedulesList.get(i).getServicePeriod());
                 }
-//                Log.e("TEST", readingSchedulesList.size() + "");
+                Log.e("TEST", readingSchedulesList.size() + "");
             } catch (Exception e) {
                 Log.e("ERR_GET_ACTV_SCHD", e.getMessage());
             }
@@ -122,22 +122,22 @@ public class ReadingListActivity extends AppCompatActivity {
                 }
 
                 // FILTER 3-DAY READING RULE
-                int updatedSize = readingSchedulesList.size();
-                for (int x=0; x<updatedSize; x++) {
-                    ReadingSchedules rs = readingSchedulesList.get(x);
-                    if (x > 1) { // THIRD RANK IN THE READING LIST (THIRD DAY)
-                        // UPDATE TO DISABLE
-                        if (rs.getDisabled() != null && rs.getDisabled()=="Yes") {
-
-                        } else {
-                            rs.setDisabled("Yes");
-                        }
-                    } else {
-                        // UPDATE TO ENABLE
-                        rs.setDisabled(null);
-                    }
-                    db.readingSchedulesDao().updateAll(rs);
-                }
+//                int updatedSize = readingSchedulesList.size();
+//                for (int x=0; x<updatedSize; x++) {
+//                    ReadingSchedules rs = readingSchedulesList.get(x);
+//                    if (x > 1) { // THIRD RANK IN THE READING LIST (THIRD DAY)
+//                        // UPDATE TO DISABLE
+//                        if (rs.getDisabled() != null && rs.getDisabled()=="Yes") {
+//
+//                        } else {
+//                            rs.setDisabled("Yes");
+//                        }
+//                    } else {
+//                        // UPDATE TO ENABLE
+//                        rs.setDisabled(null);
+//                    }
+//                    db.readingSchedulesDao().updateAll(rs);
+//                }
             } catch (Exception e) {
                 Log.e("ERR_REMOVE_FINISHED_RED", e.getMessage());
             }

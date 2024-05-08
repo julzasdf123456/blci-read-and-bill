@@ -11,12 +11,17 @@ import android.widget.RadioGroup;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
+import com.lopez.julz.readandbill.dao.RemarksPresets;
+
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Random;
 
 public class ObjectHelpers {
@@ -359,6 +364,48 @@ public class ObjectHelpers {
             Log.e("ER_SUM_DBL", e.getMessage());
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    public static boolean isConsideredActive(String status) {
+        try {
+            String values[] = { "ACTIVE", "DISCONNECTED", "A", "C", "R", "D" };
+            if (status != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    return Arrays.stream(values).anyMatch(status::equals);
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static List<RemarksPresets> getRemarkPresets() {
+        List<RemarksPresets> remarksPresetsList = new ArrayList<>();
+        remarksPresetsList.add(new RemarksPresets(0, "Read"));
+        remarksPresetsList.add(new RemarksPresets(1, "Defective Meter"));
+        remarksPresetsList.add(new RemarksPresets(2, "Unable to read"));
+        remarksPresetsList.add(new RemarksPresets(3, "No Occupant"));
+        remarksPresetsList.add(new RemarksPresets(4, "Negative Consumption"));
+
+        return remarksPresetsList;
+    }
+
+    public static String dateStringNull(String regex) {
+        try {
+            if (regex.equals(null)) {
+                return "";
+            } else {
+                return regex;
+            }
+        } catch (Exception e) {
+            Log.e("ERR_DT_STRNG_NLL", e.getMessage());
+            return "";
         }
     }
 }

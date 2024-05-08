@@ -43,7 +43,7 @@ public class ReadingListViewActivity extends AppCompatActivity {
 
     Toolbar toolbarReadingListView;
 
-    public String userId, areaCode, groupCode, servicePeriod;
+    public String userId, areaCode, groupCode, servicePeriod, zone;
 
     public EditText search;
     public TextView readingListTitle;
@@ -92,18 +92,17 @@ public class ReadingListViewActivity extends AppCompatActivity {
         areaCode = getIntent().getExtras().getString("AREACODE");
         groupCode = getIntent().getExtras().getString("GROUPCODE");
         servicePeriod = getIntent().getExtras().getString("SERVICEPERIOD");
+        zone = getIntent().getExtras().getString("ZONE");
         Log.e("TEST", servicePeriod);
 
         search = findViewById(R.id.searchList);
         downloadedPreviousReadingsList = new ArrayList<>();
         readingListViewRecyclerView = findViewById(R.id.readingListViewRecyclerView);
-        accountsListAdapter = new AccountsListAdapter(downloadedPreviousReadingsList, ReadingListViewActivity.this, servicePeriod, userId);
+        accountsListAdapter = new AccountsListAdapter(downloadedPreviousReadingsList, ReadingListViewActivity.this, servicePeriod, userId, areaCode, groupCode, "UNREAD");
         readingListViewRecyclerView.setAdapter(accountsListAdapter);
         readingListViewRecyclerView.setLayoutManager(new LinearLayoutManager(ReadingListViewActivity.this));
         readingListTitle = findViewById(R.id.readingListTitle);
-        readingListTitle.setText("Area " + areaCode + " | Day " + groupCode + " (" + ObjectHelpers.formatShortDate(servicePeriod) + ")");
-
-        new GetReadingList().execute();
+        readingListTitle.setText("Zone(s): " + zone + " | Day " + groupCode + " (" + ObjectHelpers.formatShortDate(servicePeriod) + ")");
 
 //        search.setRawInputType(Configuration.KEYBOARD_QWERTY);
 
@@ -129,6 +128,12 @@ public class ReadingListViewActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.reading_list_menu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new GetReadingList().execute();
     }
 
     @Override
@@ -220,6 +225,7 @@ public class ReadingListViewActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
+            Log.e("TEST", downloadedPreviousReadingsList.size() + "");
             accountsListAdapter.notifyDataSetChanged();
         }
     }

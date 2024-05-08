@@ -56,7 +56,7 @@ public interface RequestPlaceHolder {
     Call<List<ArrearsLedgerDistribution>> getArrearsLedger(@Query("AreaCode") String AreaCode, @Query("GroupCode") String GroupCode, @Query("ServicePeriod") String ServicePeriod, @Query("MeterReader") String MeterReader);
 
     @GET("update-downloaded-status")
-    Call<String> updateDownloadedStatus(@Query("id") String id);
+    Call<Void> updateDownloadedStatus(@Query("id") String id);
 
     @POST("receive-readings")
     Call<Readings> uploadReadings(@Body Readings readings);

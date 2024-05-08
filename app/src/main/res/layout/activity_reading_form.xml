@@ -36,11 +36,25 @@
                         android:text="Name"
                         android:layout_gravity="center_vertical"/>
 
-                    <TextView
-                        android:id="@+id/accountNumber"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Account Number"/>
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/accountNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:text="Account Number"/>
+
+                        <TextView
+                            android:id="@+id/houseNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/accountNumber"
+                            android:layout_marginLeft="10dp"
+                            android:text="House Number"/>
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -165,40 +179,34 @@
 
                     </RelativeLayout>
 
-                    <RadioGroup
-                        android:id="@+id/fieldStatus"
+                    <View
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_height="1px"
+                        android:background="@color/grey_100"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="10dp"/>
 
-                        <RadioButton
-                            android:id="@+id/stuckUp"
+                    <RelativeLayout
+                        android:id="@+id/remarksForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/selectRemarksLable"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="STUCK-UP"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginLeft="15dp"
-                            android:paddingBottom="5dp"/>
+                            android:layout_height="40dp"
+                            android:gravity="center"
+                            android:text="Select Remarks:"/>
 
-                        <RadioButton
-                            android:id="@+id/notInUse"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="NOT IN USE"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginLeft="15dp"
-                            android:paddingBottom="5dp"/>
+                        <Spinner
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:id="@+id/remarks"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/selectRemarksLable"
+                            style="@style/TextAppearance.AppCompat.Display1"></Spinner>
 
-                        <RadioButton
-                            android:id="@+id/noDisplay"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="NO DISPLAY"
-                            android:layout_marginRight="15dp"
-                            android:layout_marginLeft="15dp"
-                            android:paddingBottom="5dp"/>
-
-                    </RadioGroup>
+                    </RelativeLayout>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/takePhotoButton"

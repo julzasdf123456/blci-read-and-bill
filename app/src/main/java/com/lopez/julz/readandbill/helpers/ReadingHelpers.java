@@ -730,21 +730,36 @@ public class ReadingHelpers {
         } else {
             return "RESIDENTIAL";
         }
+    }
 
+    public static String getAccountTypeBLCI(DownloadedPreviousReadings dpr) {
+        if (dpr.getAccountType() != null) {
+            if (dpr.getAccountType().equals("RURAL RESIDENTIAL")) {
+                return "RESIDENTIAL";
+            } else {
+                return dpr.getAccountType();
+            }
+        } else {
+            return "RESIDENTIAL";
+        }
     }
 
     public static double getNearestRoundCeiling(double x) {
-//        final double pow = Math.pow(10, -Math.floor(Math.log10(x)));
-//        return Math.ceil(x * pow) / pow;
-        return getResetValue(x);
+        if (x < 1000) {
+            return 1000;
+        } else if (x > 999 && x < 10000) {
+            return 10000;
+        } else if (x > 9999 && x < 100000) {
+            return 100000;
+        } else {
+            return 1000000;
+        }
     }
 
-    public static double getResetValue(double x) {
-        String no = String.valueOf(x).substring(0,1);
-        int num = (int)x;
-        int firstD = Integer.valueOf(no);
-        String val = (firstD + 1) + getNumZeros(String.valueOf(num).length());
-        return Double.valueOf(val);
+    public static double getResetValue(double prevReading, double currentReading) {
+        double ceiling = getNearestRoundCeiling(prevReading);
+        double dif = ceiling - prevReading;
+        return currentReading + dif;
     }
 
     public static String getNumZeros(int count) {
@@ -754,4 +769,5 @@ public class ReadingHelpers {
         }
         return zeros;
     }
+
 }

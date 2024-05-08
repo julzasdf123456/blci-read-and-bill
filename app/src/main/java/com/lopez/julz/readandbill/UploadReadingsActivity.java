@@ -149,6 +149,7 @@ public class UploadReadingsActivity extends AppCompatActivity {
             if (readingsList.size() > 0) {
 //                Log.e("UPLOADING", readingsList.get(0).getAccountNumber() + " - " + readingsList.get(0).getKwhUsed());
                 Call<Readings> readingsCall = requestPlaceHolder.uploadReadings(readingsList.get(0));
+                Log.e("TEST", readingsList.get(0).getReadingErrorCode() + " - " + readingsList.get(0).getReadingErrorRemarks());
 
                 readingsCall.enqueue(new Callback<Readings>() {
                     @Override
